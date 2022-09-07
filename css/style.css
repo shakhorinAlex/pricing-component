@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+button {
+    background-color: transparent;
+    color: inherit;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+figure {
+    margin: 0;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol,
+dd {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+p {
+    margin: 0;
+}
+
+cite {
+    font-style: normal;
+}
+
+fieldset {
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --fullSlider: hsl(174, 77%, 80%);
+    --sliderBc: hsl(174, 86%, 45%);
+    --discountBc: hsl(14, 92%, 95%);
+    --discountText: hsl(15, 100%, 70%);
+    --ctaText: hsl(226, 100%, 87%);
+
+    --mainBc: hsl(230, 100%, 99%);
+    --emptySlider: hsl(224, 65%, 95%);
+    --toggleBc: hsl(223, 50%, 87%);
+    --text: hsl(225, 20%, 60%);
+    --textCtaBc: hsl(227, 35%, 25%);
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    background-color: var(--mainBc);
+    background-image: url(../images/bg-pattern.svg);
+    background-repeat: no-repeat;
+    background-position: top-left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    background-image: url(../images/pattern-circles.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    text-align: center;
+}
+
+.header {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 1rem 0;
+
+}
+
+.header-description {
+    color: var(--text);
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: center;
+    /* width: 60%; */
+    line-height: 1.625;
+    margin-bottom: 4rem;
+}
+
+.card {
+    background-color: #fff;
+    /* width: 100%; */
+    border-radius: .625rem;
+    padding: 1.625rem;
+    color: var(--text);
+    box-shadow: 0 0 1px;
+}
+
+
+/* card__price-container */
+
+.card__price-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.pageviews-text {
+    font-size: .7rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+.viewAmount {
+    margin-right: .2rem;
+}
+
+.rangeslider {
+    background: var(--emptySlider);
+    box-shadow: none;
+    border-radius: 3px;
+    margin: 1.2rem 0;
+}
+
+.rangeslider__fill {
+    background-color: var(--fullSlider);
+}
+
+.rangeslider--horizontal {
+    height: .5rem;
+}
+
+.rangeslider__handle {
+    background: var(--sliderBc) url(../images/icon-slider.svg) no-repeat center center;
+    height: 34px;
+    width: 34px;
+    box-shadow: 0 .5rem 1rem var(--sliderBc);
+    border: none;
+}
+
+.rangeslider__handle:after {
+    display: none;
+}
+
+
+
+.per-month {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.pageviews-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #000;
+    margin-right: .5rem;
+}
+
+.pageviews-month {
+    font-size: .9rem;
+}
+
+/* price-toggle */
+
+.price-toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: .8rem;
+    margin-bottom: 1rem;
+}
+
+
+.price-toggle-discount {
+    font-size: .7rem;
+}
+
+.yearly-price::after {
+    content: '-25%';
+    font-size: 8px;
+    font-weight: 800;
+    margin-left: 4px;
+    padding: 2px 4px;
+    align-content: center;
+    background-color: var(--discountBc);
+    border-radius: 2rem;
+    color: var(--discountText);
+}
+
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    margin: 0;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 2.25rem;
+    height: 1.25rem;
+    background: var(--toggleBc);
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    margin: 0 .625rem;
+    /* margin-right: .625rem; */
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    top: .2rem;
+    left: .2rem;
+    width: .8rem;
+    height: .8rem;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked+label {
+    background: var(--sliderBc);
+}
+
+input:checked+label:after {
+    left: calc(100% - .2rem);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 2.2rem;
+}
+
+
+
+/* description */
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid hsl(225, 20%, 60%, 0.25);
+    padding-top: 1rem;
+}
+
+.service-secription-list_item {
+    font-size: .8rem;
+    text-align: center;
+    margin-bottom: 0.625rem;
+}
+
+.service-secription-list_item::before {
+    content: url(../images/icon-check.svg);
+    margin-right: 1rem;
+}
+
+/* button */
+.start-btn {
+    background-color: var(--textCtaBc);
+    font-weight: 600;
+    font-size: .7rem;
+    color: var(--ctaText);
+    height: 2.1rem;
+    width: 60%;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+
+@media screen and (min-width: 1000px) {
+    body {
+        background-size: contain;
+        align-items: start;
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
+
+    .header-description {
+        width: 100%;
+    }
+
+    .card {
+        width: 500px;
+        max-height: 350px;
+    }
+
+    .card__price-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        justify-content: center;
+        align-items: center;
+        grid-template-areas:
+                "head aside"
+                "main main";
+    }
+
+    .top {
+        grid-area: head;
+    }
+    .per-month {
+        grid-area: aside;
+        margin-bottom: 0;
+    }
+    .middle {
+        grid-area: main;
+    }
+    /*Finish grid*/
+
+    .price-toggle {
+        margin: .625rem 0 1.5rem 0;
+    }
+
+    .description {
+        display: flex;
+        align-items: center;
+        justify-content: baseline;
+        flex-direction: row;
+        padding-top: 1.625rem;
+        width: 100%;
+    }
+
+    .service-description-list {
+        flex-basis: 50%;
+    }
+    .service-secription-list_item{
+        text-align: left;
+    }
+
+    .start-btn {
+        margin-top: 0;
+        width: 35%;
+    }
+
+}
